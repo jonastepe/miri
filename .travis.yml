@@ -1,4 +1,9 @@
 language: rust
+
+os:
+- osx
+- linux
+
 rust:
 - nightly
 before_script:
@@ -12,7 +17,7 @@ before_script:
 script:
 - |
   # get ourselves a MIR-ful libstd
-  xargo/build.sh
+  cd xargo && RUSTFLAGS='-Zalways-encode-mir' xargo build && cd ..
 - |
   # Test plain miri
   cargo build &&
