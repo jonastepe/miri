@@ -943,6 +943,9 @@ impl<'a, 'tcx> EvalContext<'a, 'tcx> {
                 // Return success (0)
                 self.write_null(dest, dest_ty)?;
             }
+            "_tlv_atexit" => {
+                println!("printline debugging mac os: _tlv_atexit");
+            },
 
             // Stub out all the other pthread calls to just return 0
             link_name if link_name.starts_with("pthread_") => {
